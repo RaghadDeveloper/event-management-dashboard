@@ -1,4 +1,10 @@
-import type { FieldPath, FieldValues, Path, RegisterOptions } from "react-hook-form";
+import type { ComponentType, SVGProps } from "react";
+import type {
+  FieldPath,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
 export interface FormInput<T extends FieldValues> {
   name: Path<T>;
@@ -11,3 +17,5 @@ export interface ServerValidationErrors<T extends FieldValues> {
   errors?: Partial<Record<FieldPath<T>, string>>;
   message?: string;
 }
+
+export type IconType = ComponentType<SVGProps<SVGSVGElement>>;
