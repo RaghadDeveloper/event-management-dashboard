@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
-import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { IconType } from "react-icons/lib";
 
 interface NavData {
@@ -20,6 +21,7 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
   const { path, Icon, title, children } = nav;
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const isChildActive = children?.some((child) =>
     location.pathname.startsWith(child?.path ?? ""),
@@ -35,14 +37,14 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
         <div
           className={`${style} ${
             isChildActive
-              ? "text-primary-600 bg-gray-200 border-l-5"
+              ? "text-primary-600 bg-gray-200 border-s-5"
               : "text-primary-700"
           }`}
           onClick={() => setOpen((open) => !open)}
         >
           <Icon className="text-2xl" />
           <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-            {title}
+            {t(title)}
           </h2>
           {children && !isClose && (
             <IoIosArrowDown
@@ -68,7 +70,7 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
               >
                 <child.Icon className="text-2xl" />
                 <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-                  {child.title}
+                  {t(child.title)}
                 </h2>
               </NavLink>
             ))}
@@ -82,14 +84,14 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
         className={({ isActive }) =>
           `${style} ${
             isActive
-              ? "text-primary-600 bg-gray-200 border-l-5"
+              ? "text-primary-600 bg-gray-200 border-s-5"
               : "text-primary-700"
           }`
         }
       >
         <Icon className="text-2xl" />
         <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-          {title}
+          {t(title)}
         </h2>
       </NavLink>
     );
@@ -101,7 +103,7 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
       >
         <Icon className="text-2xl" />
         <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-          {title}
+          {t(title)}
         </h2>
       </div>
     );

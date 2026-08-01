@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router";
 
 import { useInitializeAuth } from "../../features/authentication/hooks/useInitializeAuth";
+import { useDocumentDirection } from "../../hooks/useDocumentDirection";
 
 import Header from "../ui/Header";
 import Sidebar from "../ui/Sidebar";
@@ -10,6 +11,7 @@ const AppLayout = () => {
   const [closeSidebar, setCloseSidebar] = useState(false);
 
   useInitializeAuth();
+  useDocumentDirection();
 
   return (
     <section

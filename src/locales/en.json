@@ -1,0 +1,12 @@
+{
+  "dashboard": "Dashboard",
+  "services": "Services",
+  "providers": "Providers",
+  "customers": "Customers",
+  "transactions": "Transactions",
+  "notifications": "Notifications",
+  "suggestions_and_complaints": "Suggestions & Complaints",
+  "logout": "Logout",
+
+  "service providers": "Service Providers"
+}

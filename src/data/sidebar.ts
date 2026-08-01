@@ -7,41 +7,41 @@ import { GrUserWorker } from "react-icons/gr";
 export const sidebarItems = [
   {
     Icon: TbDashboard,
-    title: "Dashboard",
+    title: "dashboard",
     path: "/dashboard",
   },
   {
     Icon: MdMiscellaneousServices,
-    title: "Services",
+    title: "services",
     path: "/services",
   },
   {
     Icon: GrUserWorker,
-    title: "Providers",
+    title: "service providers",
     path: "/providers",
   },
   {
     Icon: FaRegUser,
-    title: "Customers",
+    title: "customers",
     path: "/customers",
   },
   {
     Icon: FaMoneyCheckAlt,
-    title: "Transactions",
+    title: "transactions",
     path: "/transactions",
   },
   {
     Icon: MdNotificationsActive,
-    title: "Notifications",
+    title: "notifications",
     path: "/notifications",
   },
   {
     Icon: TbMessages,
-    title: "Suggestions & Complaints",
+    title: "suggestions_and_complaints",
     path: "/feedback",
   },
   {
     Icon: HiOutlineLogout,
-    title: "Logout",
+    title: "logout",
   },
 ];

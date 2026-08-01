@@ -1,0 +1,12 @@
+{
+  "dashboard": "لوحة التحكم",
+  "services": "الخدمات",
+  "providers": "المزودين",
+  "customers": "العملاء",
+  "transactions": "المعاملات",
+  "notifications": "الإشعارات",
+  "suggestions_and_complaints": "الاقتراحات والشكاوي",
+  "logout": "تسجيل الخروج",
+
+  "service providers": "مزودي الخدمة"
+}
