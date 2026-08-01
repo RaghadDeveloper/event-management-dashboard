@@ -21,7 +21,7 @@ const AppLayout = () => {
     >
       <Header />
       <Sidebar isClose={closeSidebar} setIsClose={setCloseSidebar} />
-      <main className="bg-gray-200 p-5 overflow-auto">
+      <main className="bg-bg-secondary text-text-main p-5 overflow-auto">
         <Outlet />
       </main>
     </section>

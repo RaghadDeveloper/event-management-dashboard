@@ -37,12 +37,12 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
         <div
           className={`${style} ${
             isChildActive
-              ? "text-primary-600 bg-gray-200 border-s-5"
-              : "text-primary-700"
+              ? "text-primary-500 bg-bg-secondary/80 dark:bg-bg-secondary/40 border-s-5"
+              : ""
           }`}
           onClick={() => setOpen((open) => !open)}
         >
-          <Icon className="text-2xl" />
+          <Icon className="text-2xl text-primary-500" />
           <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
             {t(title)}
           </h2>
@@ -64,11 +64,11 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
                 to={child.path || ""}
                 className={({ isActive }) =>
                   `py-2 hover:text-primary-400 ${style} ${
-                    isActive ? "text-primary-600" : "text-primary-700"
+                    isActive ? "text-primary-500" : ""
                   }`
                 }
               >
-                <child.Icon className="text-2xl" />
+                <child.Icon className="text-2xl text-primary-500" />
                 <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
                   {t(child.title)}
                 </h2>
@@ -84,12 +84,12 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
         className={({ isActive }) =>
           `${style} ${
             isActive
-              ? "text-primary-600 bg-gray-200 border-s-5"
-              : "text-primary-700"
+              ? "text-primary-500 bg-bg-secondary/80 dark:bg-bg-secondary/40 border-s-5"
+              : ""
           }`
         }
       >
-        <Icon className="text-2xl" />
+        <Icon className="text-2xl text-primary-500" />
         <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
           {t(title)}
         </h2>
@@ -97,11 +97,8 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
     );
   else
     return (
-      <div
-        className={`${style} text-primary-700 cursor-pointer`}
-        onClick={onClick}
-      >
-        <Icon className="text-2xl" />
+      <div className={`${style} cursor-pointer`} onClick={onClick}>
+        <Icon className="text-2xl text-primary-500" />
         <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
           {t(title)}
         </h2>

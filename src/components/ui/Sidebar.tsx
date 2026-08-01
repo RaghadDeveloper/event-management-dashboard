@@ -3,10 +3,10 @@ import { FiChevronLeft } from "react-icons/fi";
 
 import { sidebarItems } from "../../data/sidebar";
 import { useLogout } from "../../features/authentication/hooks/useLogout";
+import i18n from "../../lib/i18n";
 
 import SidebarItem from "./SidebarItem";
 import Divider from "./Divider";
-import i18n from "../../i18n";
 
 interface SideBarProps {
   isClose: boolean;
@@ -22,7 +22,7 @@ const Sidebar = ({ isClose, setIsClose }: SideBarProps) => {
   };
 
   return (
-    <aside className="relative row-span-full bg-gray-100 shadow-md overflow-y-auto no-scrollbar pb-6">
+    <aside className="relative row-span-full bg-bg-main shadow-md overflow-y-auto no-scrollbar pb-6">
       <span
         className={`fixed top-15 bg-primary-600 rounded-full shadow-xl cursor-pointer p-1.5 font-black m-1 z-10 ${
           isClose ? "inset-s-20" : " inset-s-76"
@@ -31,9 +31,8 @@ const Sidebar = ({ isClose, setIsClose }: SideBarProps) => {
       >
         <FiChevronLeft
           className={`text-gray-50 transition duration-300 ease-in-out 
-             ${isClose && isRTL ? "rotate-0" : "rotate-180w"}
-             ${isClose && !isRTL ? "rotate-180" : ""}
-             ${!isClose && isRTL ? "rotate-180" : ""}
+             ${isClose && isRTL ? "rotate-0" : ""}
+             ${(isClose && !isRTL) || (!isClose && isRTL) ? "rotate-180" : ""}
              `}
         />
       </span>
@@ -51,7 +50,7 @@ const Sidebar = ({ isClose, setIsClose }: SideBarProps) => {
         />
       </div>
 
-      <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center gap-1 text-text-main">
         {sidebarItems.map((item, index) => {
           const isLogoutItem = item.title === "Logout";
 
