@@ -1,14 +1,14 @@
 import type { IconType } from "react-icons/lib";
 
 interface IconProps {
-  onCLick?: () => void;
+  onClick?: () => void;
   Icon: IconType;
 }
 
-const Icon = ({ onCLick, Icon }: IconProps) => {
+const Icon = ({ onClick, Icon }: IconProps) => {
   return (
     <Icon
-      onClick={onCLick}
+      onClick={onClick}
       className="text-primary-600 text-2xl w-fit cursor-pointer hover:text-primary-500"
     />
   );

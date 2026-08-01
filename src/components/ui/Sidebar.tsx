@@ -1,10 +1,12 @@
 import { type SetStateAction, type Dispatch } from "react";
 import { FiChevronLeft } from "react-icons/fi";
+
 import { sidebarItems } from "../../data/sidebar";
+import { useLogout } from "../../features/authentication/hooks/useLogout";
 
 import SidebarItem from "./SidebarItem";
 import Divider from "./Divider";
-import { useLogout } from "../../features/authentication/hooks/useLogout";
+import i18n from "../../i18n";
 
 interface SideBarProps {
   isClose: boolean;
@@ -12,6 +14,7 @@ interface SideBarProps {
 }
 
 const Sidebar = ({ isClose, setIsClose }: SideBarProps) => {
+  const isRTL = i18n.language === "ar";
   const { mutate: logout } = useLogout();
 
   const handleLogout = () => {
@@ -22,14 +25,16 @@ const Sidebar = ({ isClose, setIsClose }: SideBarProps) => {
     <aside className="relative row-span-full bg-gray-100 shadow-md overflow-y-auto no-scrollbar pb-6">
       <span
         className={`fixed top-15 bg-primary-600 rounded-full shadow-xl cursor-pointer p-1.5 font-black m-1 z-10 ${
-          isClose ? "left-18" : "-right-4.5g left-76"
+          isClose ? "inset-s-20" : " inset-s-76"
         }`}
         onClick={() => setIsClose((isClose) => !isClose)}
       >
         <FiChevronLeft
-          className={`text-gray-50 transition duration-300 ease-in-out ${
-            isClose && "rotate-180"
-          }`}
+          className={`text-gray-50 transition duration-300 ease-in-out 
+             ${isClose && isRTL ? "rotate-0" : "rotate-180w"}
+             ${isClose && !isRTL ? "rotate-180" : ""}
+             ${!isClose && isRTL ? "rotate-180" : ""}
+             `}
         />
       </span>
 
