@@ -1,0 +1,32 @@
+{
+  "dashboard": "لوحة التحكم",
+  "services": "الخدمات",
+  "providers": "المزودين",
+  "customers": "العملاء",
+  "transactions": "المعاملات",
+  "notifications": "الإشعارات",
+  "suggestions_and_complaints": "الاقتراحات والشكاوي",
+  "logout": "تسجيل الخروج",
+
+  "service providers": "مزودي الخدمة",
+
+  "id": "المعرف",
+  "avatar": "الصورة",
+  "user": "المستخدم",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "location": "الموقع",
+  "status": "الحالة",
+  "actions": "الاجراءات",
+
+  "all": "الكل",
+  "banned": "محظور",
+  "active": "نشط",
+
+  "governorate": "المحافظة",
+  "all governorates": "كل المحافظات",
+
+  "search": "بحث",
+  "no customers could be found": "لم يتم العثور على عملاء"
+}

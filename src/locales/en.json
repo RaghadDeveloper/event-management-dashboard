@@ -1,0 +1,33 @@
+{
+  "dashboard": "dashboard",
+  "services": "services",
+  "providers": "providers",
+  "customers": "customers",
+  "transactions": "transactions",
+  "notifications": "notifications",
+  "suggestions_and_complaints": "suggestions & complaints",
+  "logout": "logout",
+
+  "service providers": "Service Providers",
+
+  "id": "id",
+  "avatar": "avatar",
+  "user": "user",
+  "name": "name",
+  "email": "email",
+  "phone": "phone",
+  "location": "location",
+  "status": "status",
+  "actions": "actions",
+
+  "all": "all",
+  "banned": "banned",
+  "active": "active",
+
+  "governorate": "governorate",
+  "all governorates": "all governorates",
+
+  "search": "Search",
+
+  "no customers could be found": "No customers could be found"
+}
