@@ -2,6 +2,7 @@ import { MdNotificationsActive, MdOutlineTranslate } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import { useTranslation } from "react-i18next";
 
+import { queryClient } from "../../services/query/client";
 import { useLogout } from "../../features/authentication/hooks/useLogout";
 
 import Icon from "./Icon";
@@ -12,8 +13,10 @@ const Header = () => {
   const { i18n } = useTranslation();
   const { mutate: logout } = useLogout();
 
-  const handleLanguageChange = () => {
-    i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar");
+  const handleLanguageChange = async () => {
+    const language = i18n.language === "ar" ? "en" : "ar";
+    await i18n.changeLanguage(language);
+    queryClient.invalidateQueries();
   };
 
   return (

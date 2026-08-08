@@ -27,25 +27,25 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
     location.pathname.startsWith(child?.path ?? ""),
   );
 
-  const style = `w-full flex items-center gap-3 p-3 transition-all hover:text-primary-500 cursor-pointer ${
-    isClose && "justify-center"
-  }`;
+  const style = {
+    base: `w-full flex items-center gap-3 p-3 transition-all hover:text-primary-500 cursor-pointer ${
+      isClose && "justify-center"
+    }`,
+    active: `text-primary-500 bg-bg-secondary/80 dark:bg-bg-secondary/40 border-s-5`,
+    h2: `capitalize text-lg font-semibold ${isClose && "hidden"}`,
+    icon: `text-2xl text-primary-500`,
+  };
 
+  // children
   if (children)
     return (
       <div className="w-full">
         <div
-          className={`${style} ${
-            isChildActive
-              ? "text-primary-500 bg-bg-secondary/80 dark:bg-bg-secondary/40 border-s-5"
-              : ""
-          }`}
+          className={`${style.base} ${isChildActive && style.active}`}
           onClick={() => setOpen((open) => !open)}
         >
-          <Icon className="text-2xl text-primary-500" />
-          <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-            {t(title)}
-          </h2>
+          <Icon className={style.icon} />
+          <h2 className={style.h2}>{t(title)}</h2>
           {children && !isClose && (
             <IoIosArrowDown
               className={`ml-auto mr-4 transition-all ${
@@ -63,45 +63,37 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
                 key={child.title}
                 to={child.path || ""}
                 className={({ isActive }) =>
-                  `py-2 hover:text-primary-400 ${style} ${
-                    isActive ? "text-primary-500" : ""
+                  `py-2 hover:text-primary-400 ${style.base} ${
+                    isActive ? style.active : ""
                   }`
                 }
               >
-                <child.Icon className="text-2xl text-primary-500" />
-                <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-                  {t(child.title)}
-                </h2>
+                <child.Icon className={style.icon} />
+                <h2 className={style.h2}>{t(child.title)}</h2>
               </NavLink>
             ))}
         </div>
       </div>
     );
+  // path
   else if (path)
     return (
       <NavLink
         to={path}
         className={({ isActive }) =>
-          `${style} ${
-            isActive
-              ? "text-primary-500 bg-bg-secondary/80 dark:bg-bg-secondary/40 border-s-5"
-              : ""
-          }`
+          `${style.base} ${isActive && style.active}`
         }
       >
-        <Icon className="text-2xl text-primary-500" />
-        <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-          {t(title)}
-        </h2>
+        <Icon className={style.icon} />
+        <h2 className={style.h2}>{t(title)}</h2>
       </NavLink>
     );
+  // onClick
   else
     return (
-      <div className={`${style} cursor-pointer`} onClick={onClick}>
-        <Icon className="text-2xl text-primary-500" />
-        <h2 className={`text-lg font-semibold ${isClose && "hidden"}`}>
-          {t(title)}
-        </h2>
+      <div className={style.base} onClick={onClick}>
+        <Icon className={style.icon} />
+        <h2 className={style.h2}>{t(title)}</h2>
       </div>
     );
 };

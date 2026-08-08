@@ -52,7 +52,7 @@ const Sidebar = ({ isClose, setIsClose }: SideBarProps) => {
 
       <div className="flex flex-col items-center gap-1 text-text-main">
         {sidebarItems.map((item, index) => {
-          const isLogoutItem = item.title === "Logout";
+          const isLogoutItem = item.title === "logout";
 
           return index % 2 !== 0 && index !== sidebarItems.length - 1 ? (
             <div

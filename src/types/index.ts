@@ -19,3 +19,28 @@ export interface ServerValidationErrors<T extends FieldValues> {
 }
 
 export type IconType = ComponentType<SVGProps<SVGSVGElement>>;
+
+export interface Governorate {
+  id: number;
+  name: string;
+}
+
+export interface City {
+  id: number;
+  name: string;
+  governorate_id: number;
+}
+
+export interface Customer {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  address: string;
+  gender: string;
+  age: number;
+  governorate: Governorate;
+  city: City;
+  is_banned: boolean;
+}

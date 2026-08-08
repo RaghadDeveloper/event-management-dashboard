@@ -3,6 +3,7 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "../components/layouts/AppLayout";
+import Customers from "../pages/Customers";
 
 export const routes = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -18,7 +19,7 @@ export const routes = createBrowserRouter([
       { path: "dashboard", element: <Dashboard /> },
       { path: "services", element: <div>Services</div> },
       { path: "providers", element: <div>Providers</div> },
-      { path: "customers", element: <div>Customers</div> },
+      { path: "customers", element: <Customers /> },
       { path: "transactions", element: <div>Transactions</div> },
       { path: "notifications", element: <div>Notifications</div> },
       { path: "feedback", element: <div>Feedback</div> },

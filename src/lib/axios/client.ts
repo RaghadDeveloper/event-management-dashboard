@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setupInterceptors } from "./interceptors";
 import { env } from "../../config/env";
+import i18n from "../i18n";
 
 const apiClient = axios.create({
   baseURL: env.API_URL,
@@ -11,6 +12,12 @@ const apiClient = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
+});
+
+apiClient.interceptors.request.use((config) => {
+  config.headers.set("Accept-Language", i18n.resolvedLanguage || "en");
+
+  return config;
 });
 
 setupInterceptors(apiClient);
