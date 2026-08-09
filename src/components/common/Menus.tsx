@@ -134,7 +134,7 @@ const Button = ({ children, icon, onClick }: ButtonProps) => {
       <button
         type="button"
         onClick={handleClick}
-        className="flex items-center gap-2 border-none bg-transparent px-4 py-2 text-left transition-all duration-200 rounded-md hover:bg-bg-secondary"
+        className="w-full flex items-center gap-2 border-none bg-transparent px-4 py-2 text-left transition-all duration-200 rounded-md hover:bg-bg-secondary"
       >
         {icon && (
           <span className="flex items-center justify-center [&>svg]:text-gray-400 [&>svg]:transition-all [&>svg]:duration-300">

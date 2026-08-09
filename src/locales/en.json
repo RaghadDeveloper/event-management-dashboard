@@ -50,6 +50,21 @@
   "User has been banned successfully": "User has been banned successfully",
   "User has been unbanned successfully": "User has been unbanned successfully",
 
+  "approve service provider": "approve service provider",
+  "reject service provider": "reject service provider",
+
+  "are you sure you want to approve this service provider?": "are you sure you want to approve this service provider?",
+  "are you sure you want to reject this service provider?": "are you sure you want to reject this service provider?",
+  "please provide a reason for rejecting this service provider": "please provide a reason for rejecting this service provider",
+  "reason": "reason",
+  "reject": "reject",
+  "approve": "approve",
+
+  "Provider has been approved successfully": "Provider has been approved successfully",
+  "Provider has been rejected successfully": "Provider has been rejected successfully",
+  "Failed to approve provider": "Failed to approve provider",
+  "Failed to reject provider": "Failed to reject provider",
+
   "search": "Search",
   "no customers could be found": "No customers could be found"
 }

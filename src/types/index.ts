@@ -20,6 +20,14 @@ export interface ServerValidationErrors<T extends FieldValues> {
 
 export type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 
+export type ButtonVariant =
+  | "primary"
+  | "danger"
+  | "success"
+  | "warning"
+  | "secondary"
+  | "outline";
+
 export interface Governorate {
   id: number;
   name: string;
@@ -47,6 +55,7 @@ export interface Customer {
 
 export interface Provider {
   id: number;
+  service_provider_id: number;
   name: string;
   business_name: string;
   email: string;

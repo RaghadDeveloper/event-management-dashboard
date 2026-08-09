@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
+import type { ButtonVariant } from "../../types";
 
 interface ConfirmationModalProps {
   action: string;
@@ -8,6 +9,7 @@ interface ConfirmationModalProps {
   onConfirm: () => Promise<unknown>;
   onCloseModal?: () => void;
   disabled?: boolean;
+  confirmButtonVariant?: ButtonVariant;
 }
 const ConfirmationModal = ({
   action,
@@ -15,6 +17,7 @@ const ConfirmationModal = ({
   onConfirm,
   onCloseModal,
   disabled,
+  confirmButtonVariant = "danger",
 }: ConfirmationModalProps) => {
   const { t } = useTranslation();
 
@@ -27,7 +30,7 @@ const ConfirmationModal = ({
     <div className="flex flex-col">
       <Heading as="h3">{t(`${action} ${resource}`)}</Heading>
 
-      <p className="text-text-secondary first-letter:capitalize">
+      <p className="text-text-secondary mb-5 first-letter:capitalize">
         {t(`are you sure you want to ${action} this ${resource}?`)}
       </p>
 
@@ -36,7 +39,11 @@ const ConfirmationModal = ({
           {t("cancel")}
         </Button>
 
-        <Button variant="danger" disabled={disabled} onClick={handleConfirm}>
+        <Button
+          variant={confirmButtonVariant}
+          disabled={disabled}
+          onClick={handleConfirm}
+        >
           {t(action)}
         </Button>
       </div>

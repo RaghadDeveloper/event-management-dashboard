@@ -7,6 +7,20 @@ export const getCustomersApi = (filters = {}) =>
 export const getProvidersApi = (filters = {}) =>
   apiClient.get(API.USERS.PROVIDERS, { params: filters });
 
+export const approveProviderApi = (providerId: string) =>
+  apiClient.put(API.USERS.APPROVE_PROVIDER.replace(":id", providerId));
+
+export const rejectProviderApi = ({
+  providerId,
+  reason,
+}: {
+  providerId: string;
+  reason: string;
+}) =>
+  apiClient.put(API.USERS.REJECT_PROVIDER.replace(":id", providerId), {
+    reason,
+  });
+
 export const banUserApi = (userId: string) =>
   apiClient.post(API.USERS.BAN.replace(":id", userId));
 
