@@ -27,6 +27,17 @@
   "governorate": "المحافظة",
   "all governorates": "كل المحافظات",
 
+  "ban": "حظر",
+  "unban": "الغاء الحظر",
+  "ban customer": "حظر المستخدم",
+  "unban customer": "إلغاء حظر المستخدم",
+  "cancel": "إلغاء",
+
+  "are you sure you want to ban this customer?": "هل أنت متأكد أنك تريد حظر هذا المستخدم؟",
+  "are you sure you want to unban this customer?": "هل أنت متأكد أنك تريد إلغاء حظر هذا المستخدم؟",
+  "customer has been banned successfully": "تم حظر المستخدم بنجاح",
+  "customer has been unbanned successfully": "تم إلغاء حظر المستخدم بنجاح",
+
   "search": "بحث",
   "no customers could be found": "لم يتم العثور على عملاء"
 }

@@ -1,11 +1,21 @@
 import { useTranslation } from "react-i18next";
 import type { Customer } from "../../../types";
+import { IoBan } from "react-icons/io5";
+
+import { useBanUser } from "../hooks/useBanUser";
+import { useUnbanUser } from "../hooks/useUnbanUser";
 
 import Table from "../../../components/common/Table";
+import Menus from "../../../components/common/Menus";
+import Modal from "../../../components/common/Modal";
+import ConfirmationModal from "../../../components/common/ConfirmationModal";
 
 const CustomerRow = ({ customer }: { customer: Customer }) => {
   const { id, name, email, phone, avatar, address, is_banned } = customer;
   const { t } = useTranslation();
+
+  const { mutateAsync: banUser, isPending: isBanning } = useBanUser();
+  const { mutateAsync: unbanUser, isPending: isUnbanning } = useUnbanUser();
 
   const cellStyle = "mx-3 min-w-fits text-nowrap";
 
@@ -31,7 +41,41 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
           {t("active")}
         </p>
       )}
-      <p className={cellStyle}>...</p>
+      <Modal>
+        <Menus.Menu>
+          <Menus.Toggle id={id} />
+
+          <Menus.List id={id}>
+            {is_banned ? (
+              <Modal.Open opens="unban">
+                <Menus.Button icon={<IoBan />}>{t("unban customer")}</Menus.Button>
+              </Modal.Open>
+            ) : (
+              <Modal.Open opens="ban">
+                <Menus.Button icon={<IoBan />}>{t("ban customer")}</Menus.Button>
+              </Modal.Open>
+            )}
+          </Menus.List>
+        </Menus.Menu>
+
+        <Modal.Window name="unban">
+          <ConfirmationModal
+            action="unban"
+            resource="customer"
+            onConfirm={() => unbanUser(String(id))}
+            disabled={isUnbanning}
+          />
+        </Modal.Window>
+
+        <Modal.Window name="ban">
+          <ConfirmationModal
+            action="ban"
+            resource="customer"
+            onConfirm={() => banUser(String(id))}
+            disabled={isBanning}
+          />
+        </Modal.Window>
+      </Modal>
     </Table.Row>
   );
 };

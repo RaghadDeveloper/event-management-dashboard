@@ -16,14 +16,14 @@ interface TableRowProps {
 }
 
 const commonStyle =
-  "grid py-2.5 bg-bg-main items-center border-b border-tertiary min-w-fit text-sm transition-all";
+  "grid py-2.5 bg-bg-main items-center border-b border-tertiary/40 min-w-fit text-sm transition-all";
 
 const TableContext = createContext({ columns: "" });
 
 const Table = ({ children, columns }: TableProps) => {
   return (
     <TableContext.Provider value={{ columns }}>
-      <div className="overflow-x-auto shadow-md h-fit rounded-md grid border border-tertiary">
+      <div className="overflow-x-auto shadow-md h-fit rounded-md grid">
         {children}
       </div>
     </TableContext.Provider>
@@ -57,7 +57,7 @@ const Row = ({ children, onClick }: TableRowProps) => {
 
   return (
     <div
-      className={`${commonStyle} ${columns} 2xl:text-base last:border-none hover:bg-bg-secondary/80 dark:hover:bg-bg-secondary/40 hover:rounded-sm hover:shadow-md`}
+      className={`${commonStyle} ${columns} relative 2xl:text-base last:border-none hover:bg-bg-secondary/80 dark:hover:bg-bg-secondary/40 hover:rounded-sm hover:shadow-md`}
       onClick={onClick}
     >
       {children}
