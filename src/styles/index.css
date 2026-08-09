@@ -55,7 +55,7 @@
 
 @layer components {
   .input {
-    @apply p-2 border-[1.5px] border-gray-300 rounded-md transition-all focus:outline-none focus:border-2 focus:border-primary-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:opacity-75;
+    @apply p-2 border-[1.5px] border-tertiary text-text-main rounded-md transition-all focus:outline-none focus:border-2 focus:border-primary-500 disabled:text-neutral-500 disabled:cursor-not-allowed disabled:opacity-75;
   }
 }
 

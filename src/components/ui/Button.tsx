@@ -1,12 +1,8 @@
+import type { ButtonVariant } from "../../types";
+
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
-  variant:
-    | "primary"
-    | "danger"
-    | "success"
-    | "warning"
-    | "secondary"
-    | "outline";
+  variant: ButtonVariant;
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;

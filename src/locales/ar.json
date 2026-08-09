@@ -50,6 +50,21 @@
   "User has been banned successfully": "تم حظر المستخدم بنجاح",
   "User has been unbanned successfully": "تم إلغاء حظر المستخدم بنجاح",
 
+  "approve service provider": "الموافقة على مزود الخدمة",
+  "reject service provider": "رفض مزود الخدمة",
+
+  "are you sure you want to approve this service provider?": "هل أنت متأكد أنك تريد الموافقة على هذا المزود؟",
+  "are you sure you want to reject this service provider?": "هل أنت متأكد أنك تريد رفض هذا المزود؟",
+  "please provide a reason for rejecting this service provider": "يرجى تقديم سبب لرفض هذا المزود",
+  "reason": "السبب",
+  "reject": "رفض",
+  "approve": "موافقة",
+
+  "Provider has been approved successfully": "تمت الموافقة على المزود بنجاح",
+  "Provider has been rejected successfully": "تم رفض المزود بنجاح",
+  "Failed to approve provider": "فشل في الموافقة على المزود",
+  "Failed to reject provider": "فشل في رفض المزود",
+
   "search": "بحث",
   "no customers could be found": "لم يتم العثور على عملاء"
 }
