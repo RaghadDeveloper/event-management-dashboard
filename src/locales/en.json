@@ -17,17 +17,39 @@
   "email": "email",
   "phone": "phone",
   "location": "location",
-  "status": "status",
   "actions": "actions",
+  "approval status": "approval status",
+  "account status": "account status",
+  "business info": "business info",
+
+  "years of experience": "years of experience",
 
   "all": "all",
   "banned": "banned",
   "active": "active",
 
+  "approved": "approved",
+  "rejected": "rejected",
+  "pending": "pending",
+
   "governorate": "governorate",
   "all governorates": "all governorates",
 
-  "search": "Search",
+  "ban": "ban",
+  "unban": "unban",
+  "ban customer": "ban customer",
+  "unban customer": "unban customer",
+  "ban service provider": "ban service provider",
+  "unban service provider": "unban service provider",
+  "cancel": "cancel",
 
+  "are you sure you want to ban this customer?": "are you sure you want to ban this customer?",
+  "are you sure you want to unban this customer?": "are you sure you want to unban this customer?",
+  "are you sure you want to ban this service provider?": "are you sure you want to ban this service provider?",
+  "are you sure you want to unban this service provider?": "are you sure you want to unban this service provider?",
+  "User has been banned successfully": "User has been banned successfully",
+  "User has been unbanned successfully": "User has been unbanned successfully",
+
+  "search": "Search",
   "no customers could be found": "No customers could be found"
 }

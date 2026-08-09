@@ -23,7 +23,7 @@ const Search = () => {
     <input
       type="search"
       placeholder={t("search") + " ..."}
-      className="input border border-tertiary bg-bg-main min-w-80 focus:border-primary-500"
+      className="input border border-tertiary/40 bg-bg-main min-w-80 shadow-sm focus:border-primary-500"
       value={searchTerm}
       onChange={handleSearch}
     />

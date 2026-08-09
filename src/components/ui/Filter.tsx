@@ -17,7 +17,7 @@ const Filter = ({ options, filterField }: FilterProps) => {
   };
 
   return (
-    <div className="flex gap-2 border border-tertiary rounded-md p-1 w-fit bg-bg-main">
+    <div className="flex gap-2 border border-tertiary/40 shadow-sm rounded-md p-1 w-fit bg-bg-main">
       {options.map((option, index) => (
         <Button
           key={index}

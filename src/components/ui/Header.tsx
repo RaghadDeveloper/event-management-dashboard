@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-bg-main flex justify-end items-center border-s-2 border-s-bg-secondary px-3 py-2.5 gap-4 shadow-md">
+    <header className="bg-bg-main flex justify-end items-center border-s-2 border-s-bg-secondary px-3 py-2.5 gap-4 shadow-md border-b-4 border-bg-secondary">
       <Icon Icon={MdNotificationsActive} />
       <Icon Icon={MdOutlineTranslate} onClick={handleLanguageChange} />
       <Divider className="vertical" />

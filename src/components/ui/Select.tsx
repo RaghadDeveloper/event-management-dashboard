@@ -40,7 +40,7 @@ const Select = ({ options, filterField }: SelectProps) => {
 
   return (
     <select
-      className="input bg-bg-main border-tertiary border capitalize"
+      className="input bg-bg-main border-tertiary/40 border capitalize shadow-sm focus:border-primary-500 min-w-40"
       name={filterField}
       value={selectedOption?.value ?? ""}
       onChange={(e) => handleChange(e.target.value)}

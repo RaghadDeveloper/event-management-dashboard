@@ -9,6 +9,7 @@ import type { Customer } from "../../../types";
 import Empty from "../../../components/ui/Empty";
 import Loader from "../../../components/common/Loader";
 import Pagination from "../../../components/common/Pagination";
+import Menus from "../../../components/common/Menus";
 
 const CustomersTable = () => {
   const { data, isPending } = useCustomers();
@@ -22,9 +23,11 @@ const CustomersTable = () => {
     <Table columns={customersTableGrid}>
       <Table.Header titles={customersTableColumns} />
       <Table.Body>
-        {customers?.map((customer: Customer) => (
-          <CustomerRow key={customer.id} customer={customer} />
-        ))}
+        <Menus>
+          {customers?.map((customer: Customer) => (
+            <CustomerRow key={customer.id} customer={customer} />
+          ))}
+        </Menus>
       </Table.Body>
       <Table.Footer>
         <Pagination count={pagination?.total_items || 0} />
