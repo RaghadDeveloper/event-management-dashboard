@@ -39,11 +39,11 @@ const Header = ({ titles }: TableHeaderProps) => {
   const { columns } = useContext(TableContext);
 
   return (
-    <header className={`${commonStyle} ${columns} md:text-base rounded-t-md`}>
+    <header className={`${commonStyle} ${columns} 2xl:text-base rounded-t-md`}>
       {titles.map((title) => (
         <h5
           key={title}
-          className="mx-3 font-semibold text-primary-500 uppercase"
+          className="mx-3 font-semibold text-primary-500 uppercase text-nowrap"
         >
           {t(title)}
         </h5>

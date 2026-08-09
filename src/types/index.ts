@@ -44,3 +44,20 @@ export interface Customer {
   city: City;
   is_banned: boolean;
 }
+
+export interface Provider {
+  id: number;
+  name: string;
+  business_name: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  address: string;
+  gender: string;
+  age: number;
+  years_of_experience: number;
+  governorate: Governorate;
+  city: City;
+  approval_status: "approved" | "rejected" | "pending";
+  is_banned: boolean;
+}

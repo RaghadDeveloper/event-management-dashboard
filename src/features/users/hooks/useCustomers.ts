@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 
 import { getCustomersApi } from "../api";
-import type { CustomerFilters } from "../types";
+import type { CustomersFilters } from "../types";
 import { PAGE_SIZE } from "../../../utils/constants";
 import { queryClient } from "../../../services/query/client";
 // import { useGovernorates } from "../../Locations/hooks/useGovernorates";
@@ -13,7 +13,7 @@ export const useCustomers = () => {
 
   // const { data: governorates = [] } = useGovernorates();
 
-  const filters: CustomerFilters = {};
+  const filters: CustomersFilters = {};
 
   const status = searchParams.get("status");
   const search = searchParams.get("search");

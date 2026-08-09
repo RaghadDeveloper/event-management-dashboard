@@ -1,0 +1,125 @@
+import { useTranslation } from "react-i18next";
+import type { Provider } from "../../../types";
+import { IoBan } from "react-icons/io5";
+import { useNavigate } from "react-router";
+
+import { useBanUser } from "../hooks/useBanUser";
+import { useUnbanUser } from "../hooks/useUnbanUser";
+import { statusColors } from "../constants/tables-data";
+
+import Table from "../../../components/common/Table";
+import Menus from "../../../components/common/Menus";
+import Modal from "../../../components/common/Modal";
+import ConfirmationModal from "../../../components/common/ConfirmationModal";
+
+const ProviderRow = ({ provider }: { provider: Provider }) => {
+  const {
+    id,
+    business_name,
+    name,
+    email,
+    phone,
+    governorate,
+    city,
+    avatar,
+    approval_status,
+    is_banned,
+    years_of_experience,
+  } = provider;
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const { mutateAsync: banUser, isPending: isBanning } = useBanUser();
+  const { mutateAsync: unbanUser, isPending: isUnbanning } = useUnbanUser();
+
+  const cellStyle = "mx-3 text-nowrap";
+
+  return (
+    <Table.Row key={id} onClick={() => navigate(`${id}`)}>
+      <img
+        src={avatar}
+        alt={name}
+        className={`${cellStyle} min-w-10 w-12 h-12 rounded-full object-cover`}
+      />
+      <div className="flex flex-col">
+        <p className={cellStyle}>{name}</p>
+        <p className={cellStyle + " text-neutral-500"}>{email}</p>
+      </div>
+
+      <div>
+        <p className={cellStyle}>{business_name}</p>
+        <p className={cellStyle + " text-neutral-500"}>
+          {years_of_experience} {t("years of experience")}
+        </p>
+      </div>
+      <p className={cellStyle}>{phone}</p>
+      <p className={cellStyle}>
+        {governorate?.name}, {city?.name}
+      </p>
+
+      <p
+        className={
+          statusColors[approval_status] +
+          " font-semibold capitalize " +
+          cellStyle
+        }
+      >
+        {t(approval_status)}
+      </p>
+      <p
+        className={
+          statusColors[is_banned ? "banned" : "active"] +
+          " " +
+          cellStyle +
+          " font-semibold capitalize"
+        }
+      >
+        {t(is_banned ? "banned" : "active")}
+      </p>
+
+      <div onClick={(e) => e.stopPropagation()}>
+        <Modal>
+          <Menus.Menu>
+            <Menus.Toggle id={id} />
+
+            <Menus.List id={id}>
+              {is_banned ? (
+                <Modal.Open opens="unban">
+                  <Menus.Button icon={<IoBan />}>
+                    {t("unban service provider")}
+                  </Menus.Button>
+                </Modal.Open>
+              ) : (
+                <Modal.Open opens="ban">
+                  <Menus.Button icon={<IoBan />}>
+                    {t("ban service provider")}
+                  </Menus.Button>
+                </Modal.Open>
+              )}
+            </Menus.List>
+          </Menus.Menu>
+
+          <Modal.Window name="unban">
+            <ConfirmationModal
+              action="unban"
+              resource="service provider"
+              onConfirm={() => unbanUser(String(id))}
+              disabled={isUnbanning}
+            />
+          </Modal.Window>
+
+          <Modal.Window name="ban">
+            <ConfirmationModal
+              action="ban"
+              resource="service provider"
+              onConfirm={() => banUser(String(id))}
+              disabled={isBanning}
+            />
+          </Modal.Window>
+        </Modal>
+      </div>
+    </Table.Row>
+  );
+};
+
+export default ProviderRow;

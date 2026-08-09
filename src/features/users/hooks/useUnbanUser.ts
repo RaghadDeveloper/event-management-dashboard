@@ -11,10 +11,11 @@ export const useUnbanUser = () => {
     mutationFn: unbanUserApi,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["customers"] });
-      toast.success(t("customer has been unbanned successfully"));
+      queryClient.invalidateQueries({ queryKey: ["providers"] });
+      toast.success(t("User has been unbanned successfully"));
     },
     onError: () => {
-      toast.error(t("Failed to unban customer"));
+      toast.error(t("Failed to unban user"));
     },
   });
 };
