@@ -1,6 +1,7 @@
 {
   "dashboard": "لوحة التحكم",
   "services": "الخدمات",
+  "categories": "التصنيفات",
   "providers": "المزودين",
   "customers": "العملاء",
   "transactions": "المعاملات",
