@@ -1,17 +1,19 @@
-import Button from "../../../components/ui/Button";
-import Input from "../../../components/ui/Input";
 import { loginInputs } from "../constants/loginInputs";
 import { useForm } from "react-hook-form";
 import { useLogin } from "../hooks/useLogin";
-import type { LoginPayload } from "../types";
 import { handleFormErrors } from "../../../utils/handleFormErrors";
-import ErrorMessage from "../../../components/ui/ErrorMessage";
 import { useNavigate } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setAccessToken } from "../store/authSlice";
 import { useEffect } from "react";
 import { selectIsAuthenticated } from "../store/authSelectors";
 import { authStorage } from "../../../storage/authStorage";
+import { requestNotificationPermission } from "../../../services/firebase/notifications";
+import type { LoginPayload } from "../types";
+
+import ErrorMessage from "../../../components/ui/ErrorMessage";
+import Button from "../../../components/ui/Button";
+import Input from "../../../components/ui/Input";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -27,17 +29,22 @@ const LoginForm = () => {
     if (isAuthenticated) navigate("/", { replace: true });
   }, [isAuthenticated, navigate]);
 
-  const onSubmit = (data: LoginPayload) => {
-    login(data, {
-      onError: (error) => {
-        handleFormErrors({ error, setError });
+  const onSubmit = async (data: LoginPayload) => {
+    const fcmToken = (await requestNotificationPermission()) || "no-token";
+
+    await login(
+      { ...data, fcm_token: fcmToken },
+      {
+        onError: (error) => {
+          handleFormErrors({ error, setError });
+        },
+        onSuccess: (response) => {
+          const accessToken = response.data.data.token.access_token;
+          authStorage.save(accessToken);
+          dispatch(setAccessToken(accessToken));
+        },
       },
-      onSuccess: (response) => {
-        const accessToken = response.data.data.access_token;
-        authStorage.save(accessToken);
-        dispatch(setAccessToken(accessToken));
-      },
-    });
+    );
   };
 
   return (
