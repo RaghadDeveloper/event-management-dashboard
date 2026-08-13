@@ -5,6 +5,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "../components/layouts/AppLayout";
 import Customers from "../pages/Customers";
 import Providers from "../pages/Providers";
+import Categories from "../pages/Categories";
 
 export const routes = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -18,7 +19,7 @@ export const routes = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="dashboard" replace /> },
       { path: "dashboard", element: <Dashboard /> },
-      { path: "services", element: <div>Services</div> },
+      { path: "categories", element: <Categories /> },
       {
         path: "providers",
         children: [

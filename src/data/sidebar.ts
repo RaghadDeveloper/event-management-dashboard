@@ -12,8 +12,8 @@ export const sidebarItems = [
   },
   {
     Icon: MdMiscellaneousServices,
-    title: "services",
-    path: "/services",
+    title: "categories",
+    path: "/categories",
   },
   {
     Icon: GrUserWorker,

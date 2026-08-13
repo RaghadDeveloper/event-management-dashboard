@@ -6,12 +6,16 @@ import { useDocumentDirection } from "../../hooks/useDocumentDirection";
 
 import Header from "../ui/Header";
 import Sidebar from "../ui/Sidebar";
+import { useNotifications } from "../../hooks/useNotifications";
 
 const AppLayout = () => {
   const [closeSidebar, setCloseSidebar] = useState(false);
 
   useInitializeAuth();
   useDocumentDirection();
+  useNotifications((payload) => {
+    console.log("Notification received in AppLayout:", payload);
+  });
 
   return (
     <section

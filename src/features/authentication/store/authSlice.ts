@@ -17,6 +17,7 @@ const authSlice = createSlice({
       state.user = null;
       state.accessToken = null;
       state.refreshToken = null;
+      authStorage.remove();
     },
 
     setUser: (state, action: PayloadAction<User>) => {

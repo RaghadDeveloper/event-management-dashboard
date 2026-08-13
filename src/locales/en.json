@@ -1,6 +1,7 @@
 {
   "dashboard": "dashboard",
   "services": "services",
+  "categories": "categories",
   "providers": "providers",
   "customers": "customers",
   "transactions": "transactions",
