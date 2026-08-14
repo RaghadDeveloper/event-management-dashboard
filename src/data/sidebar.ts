@@ -3,6 +3,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { MdMiscellaneousServices, MdNotificationsActive } from "react-icons/md";
 import { TbDashboard, TbMessages } from "react-icons/tb";
 import { GrUserWorker } from "react-icons/gr";
+import { IoCalendarOutline } from "react-icons/io5";
 
 export const sidebarItems = [
   {
@@ -24,6 +25,11 @@ export const sidebarItems = [
     Icon: FaRegUser,
     title: "customers",
     path: "/customers",
+  },
+  {
+    Icon: IoCalendarOutline,
+    title: "bookings",
+    path: "/bookings",
   },
   {
     Icon: FaMoneyCheckAlt,

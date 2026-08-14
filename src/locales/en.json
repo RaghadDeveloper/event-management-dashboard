@@ -67,5 +67,13 @@
   "Failed to reject provider": "Failed to reject provider",
 
   "search": "Search",
-  "no customers could be found": "No customers could be found"
+  "no customers could be found": "No customers could be found",
+
+  "image": "image",
+  "service": "service",
+  "provider": "provider",
+  "customer": "customer",
+  "date": "date",
+  "price": "price",
+  "status": "status"
 }
