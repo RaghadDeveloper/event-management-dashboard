@@ -7,6 +7,7 @@ import Customers from "../pages/Customers";
 import Providers from "../pages/Providers";
 import Categories from "../pages/Categories";
 import Bookings from "../pages/Bookings";
+import ProviderDetails from "../pages/ProviderDetails";
 
 export const routes = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -25,7 +26,7 @@ export const routes = createBrowserRouter([
         path: "providers",
         children: [
           { index: true, element: <Providers /> },
-          { path: ":id", element: <div>Provider Details</div> },
+          { path: ":id", element: <ProviderDetails /> },
         ],
       },
       { path: "customers", element: <Customers /> },

@@ -5,6 +5,8 @@ import type {
   Path,
   RegisterOptions,
 } from "react-hook-form";
+import type { Category } from "../features/categories/types";
+import type { WorkingHour } from "../features/users/types";
 
 export interface FormInput<T extends FieldValues> {
   name: Path<T>;
@@ -19,6 +21,15 @@ export interface ServerValidationErrors<T extends FieldValues> {
 }
 
 export type IconType = ComponentType<SVGProps<SVGSVGElement>>;
+
+export interface InfoBlockProps {
+  Icon?: IconType;
+  title: string;
+  value: string;
+  col?: boolean;
+  className?: string;
+  linkType?: "email" | "phone" | "location" | "external" | undefined;
+}
 
 export type ButtonVariant =
   | "primary"
@@ -69,4 +80,9 @@ export interface Provider {
   city: City;
   approval_status: "approved" | "rejected" | "pending";
   is_banned: boolean;
+  rating: number;
+  reviews_count: number;
+  description: string;
+  categories: Category[];
+  working_hours: WorkingHour[];
 }

@@ -39,9 +39,10 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
     useApproveProvider();
 
   const cellStyle = "mx-3 text-nowrap";
+  console.log("is_banned", is_banned);
 
   return (
-    <Table.Row key={id} onClick={() => navigate(`${id}`)}>
+    <Table.Row key={id} onClick={() => navigate(`${service_provider_id}`)}>
       <img
         src={avatar}
         alt={name}
