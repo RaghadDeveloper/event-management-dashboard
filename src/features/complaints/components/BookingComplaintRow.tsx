@@ -38,7 +38,7 @@ const BookingComplaintRow = ({
         navigate(`/bookings/${booking.id}`, { state: { complaintData } })
       }
     >
-      <Table.Row onClick={() => navigate(`${id}`)}>
+      <Table.Row>
         <p className={cellStyle}>{id}</p>
         <p className={cellStyle}>{customer_name}</p>
         <p className={cellStyle}>{provider_name}</p>
