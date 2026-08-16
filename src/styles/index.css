@@ -57,6 +57,10 @@
   .input {
     @apply p-2 border-[1.5px] border-tertiary text-text-main rounded-md transition-all focus:outline-none focus:border-2 focus:border-primary-500 disabled:text-neutral-500 disabled:cursor-not-allowed disabled:opacity-75;
   }
+
+  .card {
+    @apply bg-bg-main px-5 py-5 rounded-md w-full flex flex-col gap-2 shadow-md relative
+  }
 }
 
 @layer utilities {

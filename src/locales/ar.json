@@ -67,5 +67,13 @@
   "Failed to reject provider": "فشل في رفض المزود",
 
   "search": "بحث",
-  "no customers could be found": "لم يتم العثور على عملاء"
+  "no customers could be found": "لم يتم العثور على عملاء",
+
+  "image": "",
+  "service": "الخدمة",
+  "provider": "مزود الخدمة",
+  "customer": "الزبون",
+  "date": "التاريخ",
+  "price": "السعر",
+  "status": "الحالة"
 }
