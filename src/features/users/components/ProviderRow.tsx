@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import type { Provider } from "../../../types";
-import { IoBan } from "react-icons/io5";
+import { IoBan, IoEyeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import { MdCancel, MdCheckCircleOutline } from "react-icons/md";
 
@@ -42,7 +42,7 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
   console.log("is_banned", is_banned);
 
   return (
-    <Table.Row key={id} onClick={() => navigate(`${service_provider_id}`)}>
+    <Table.Row>
       <img
         src={avatar}
         alt={name}
@@ -90,6 +90,12 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
             <Menus.Toggle id={id} />
 
             <Menus.List id={id}>
+              <Menus.Button
+                icon={<IoEyeOutline />}
+                onClick={() => navigate(`${service_provider_id}`)}
+              >
+                {t("view profile")}
+              </Menus.Button>
               {approval_status === "pending" && (
                 <>
                   <Modal.Open opens="approve">
