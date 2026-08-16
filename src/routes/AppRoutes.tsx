@@ -8,6 +8,7 @@ import Providers from "../pages/Providers";
 import Categories from "../pages/Categories";
 import Bookings from "../pages/Bookings";
 import ProviderDetails from "../pages/ProviderDetails";
+import BookingDetails from "../pages/BookingDetails";
 
 export const routes = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -34,7 +35,7 @@ export const routes = createBrowserRouter([
         path: "bookings",
         children: [
           { index: true, element: <Bookings /> },
-          { path: ":id", element: <p>booking Details</p> },
+          { path: ":id", element: <BookingDetails /> },
         ],
       },
       { path: "transactions", element: <div>Transactions</div> },

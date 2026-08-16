@@ -24,14 +24,14 @@ const InfoBlock = ({
 
       {linkType ? (
         <a
-          className={`w-fit ${className}`}
+          className={`w-fit ${className}  text-neutral-500`}
           href={getLink(linkType, value)}
           target="_blank"
         >
           {value}
         </a>
       ) : (
-        <pre className={`font-[inherit] text-wrap ${className}`}>{value}</pre>
+        <pre className={`font-[inherit] text-wrap ${className} text-neutral-500`}>{value}</pre>
       )}
     </div>
   );

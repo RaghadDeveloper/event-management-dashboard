@@ -38,9 +38,9 @@ const BookingRow = ({ booking }: { booking: Booking }) => {
           {estimated_price.toLocaleString()}
         </p>
         <p
-          className={`${cellStyle} ${statusColors[status]} font-semibold capitalize`}
+          className={`${cellStyle} text-${statusColors[status]} font-semibold capitalize`}
         >
-          {status}
+          {status.at(0)?.toUpperCase() + status.slice(1).replace("_", " ")}
         </p>
       </Table.Row>
     </div>

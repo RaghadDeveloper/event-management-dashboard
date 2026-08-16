@@ -14,14 +14,14 @@ export const bookingsTableGrid =
   "grid-cols-[2rem_6rem_2fr_1fr_1fr_1fr_8rem_6rem_8rem]";
 
 export const statusColors = {
-  pending: "text-warning",
-  accepted: "text-success",
-  deposit_paid: "text-warning",
-  confirmed: "text-success",
-  completed: "text-neutral-600",
-  cancelled: "text-danger",
-  rejected: "text-danger",
-  expired: "text-neutral-600",
+  pending: "warning",
+  accepted: "success",
+  deposit_paid: "warning",
+  confirmed: "success",
+  completed: "neutral-600",
+  cancelled: "danger",
+  rejected: "danger",
+  expired: "neutral-600",
 };
 
 export const bookingsStatusFilters = [

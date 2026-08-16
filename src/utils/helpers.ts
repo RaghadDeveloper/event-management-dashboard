@@ -15,3 +15,26 @@ export const getLink = (
       return link;
   }
 };
+
+export const formatDuration = (minutes: number): string => {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  const parts: string[] = [];
+
+  if (hours > 0) {
+    parts.push(`${hours} ${hours === 1 ? "hour" : "hours"}`);
+  }
+
+  if (remainingMinutes > 0) {
+    parts.push(`${remainingMinutes} min`);
+  }
+
+  return parts.join(", ");
+};
+
+import { format, parseISO } from "date-fns";
+
+export const formatBookingDate = (date: string): string => {
+  return format(parseISO(date), "dd MMM, yyyy");
+};
