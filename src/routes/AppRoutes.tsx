@@ -9,6 +9,7 @@ import Categories from "../pages/Categories";
 import Bookings from "../pages/Bookings";
 import ProviderDetails from "../pages/ProviderDetails";
 import BookingDetails from "../pages/BookingDetails";
+import Complaints from "../pages/Complaints";
 
 export const routes = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -41,6 +42,7 @@ export const routes = createBrowserRouter([
       { path: "transactions", element: <div>Transactions</div> },
       { path: "notifications", element: <div>Notifications</div> },
       { path: "feedback", element: <div>Feedback</div> },
+      { path: "complaints", element: <Complaints /> },
     ],
   },
 ]);

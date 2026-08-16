@@ -34,7 +34,7 @@ const Input = <T extends FieldValues>({
 
       {type === "password" && (
         <span
-          className={`absolute right-3 top-11 text-gray-600 ${disabled ? "opacity-35 cursor-not-allowed" : "cursor-pointer"}`}
+          className={`absolute right-3 top-11 text-neutral-500 ${disabled ? "opacity-35 cursor-not-allowed" : "cursor-pointer"}`}
           onClick={() => {
             if (!disabled) setShow(!show);
           }}

@@ -1,9 +1,10 @@
 import { FaMoneyCheckAlt, FaRegUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { MdMiscellaneousServices, MdNotificationsActive } from "react-icons/md";
-import { TbDashboard, TbMessages } from "react-icons/tb";
+import { TbDashboard } from "react-icons/tb";
 import { GrUserWorker } from "react-icons/gr";
 import { IoCalendarOutline } from "react-icons/io5";
+import { GoReport } from "react-icons/go";
 
 export const sidebarItems = [
   {
@@ -42,9 +43,9 @@ export const sidebarItems = [
     path: "/notifications",
   },
   {
-    Icon: TbMessages,
-    title: "suggestions_and_complaints",
-    path: "/feedback",
+    Icon: GoReport,
+    title: "bookings complaints",
+    path: "/complaints",
   },
   {
     Icon: HiOutlineLogout,

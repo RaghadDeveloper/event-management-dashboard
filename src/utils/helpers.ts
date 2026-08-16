@@ -35,6 +35,6 @@ export const formatDuration = (minutes: number): string => {
 
 import { format, parseISO } from "date-fns";
 
-export const formatBookingDate = (date: string): string => {
+export const formatDate = (date: string): string => {
   return format(parseISO(date), "dd MMM, yyyy");
 };

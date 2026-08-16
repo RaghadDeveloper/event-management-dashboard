@@ -1,5 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import Heading from "../components/ui/Heading";
 import { useBookingDetails } from "../features/bookings/hooks/useBookingDatails";
 import Loader from "../components/common/Loader";
@@ -10,16 +10,21 @@ import { GrLocation } from "react-icons/gr";
 import MiniInfo from "../components/ui/MiniInfo";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FiClock, FiPlayCircle, FiStopCircle } from "react-icons/fi";
-import { formatBookingDate, formatDuration } from "../utils/helpers";
+import { formatDate, formatDuration } from "../utils/helpers";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
+import type { BookingComplaint } from "../features/complaints/types";
+import { complaintStatusColors } from "../features/complaints/constant/table-data";
 
 const BookingDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { data: bookingDetails, isPending: loadingDetails } = useBookingDetails(
     String(id),
   );
+  const complaintData: BookingComplaint | undefined =
+    location.state?.complaintData;
 
   if (loadingDetails) return <Loader />;
 
@@ -46,7 +51,7 @@ const BookingDetails = () => {
     {
       Icon: IoCalendarOutline,
       title: "Date",
-      value: formatBookingDate(booking_date),
+      value: formatDate(booking_date),
     },
     {
       Icon: FiClock,
@@ -89,15 +94,13 @@ const BookingDetails = () => {
   const paymentDeadlinesInfo = [
     {
       title: "Deposit Deadline",
-      value: !deposit_deadline
-        ? "__"
-        : formatBookingDate(String(deposit_deadline)),
+      value: !deposit_deadline ? "__" : formatDate(String(deposit_deadline)),
     },
     {
       title: "Final Payment Deadline",
       value: !final_payment_deadline
         ? "__"
-        : formatBookingDate(String(final_payment_deadline)),
+        : formatDate(String(final_payment_deadline)),
     },
   ];
 
@@ -126,7 +129,7 @@ const BookingDetails = () => {
         <div className="flex gap-2 items-center text-neutral-500 text-lg">
           <LuCalendarClock className="text-primary-500" />
           <p>
-            {formatBookingDate(booking_date)} at {start_time}
+            {formatDate(booking_date)} at {start_time}
           </p>
         </div>
         <div className="flex gap-2 items-center text-neutral-500 text-lg">
@@ -136,6 +139,42 @@ const BookingDetails = () => {
           </p>
         </div>
       </header>
+
+      {/* complaint */}
+      {complaintData && (
+        <div className="card">
+          <div className="flex justify-between items-center ">
+            <Heading as="h5">Complaint Details</Heading>
+            <p
+              className={`text-${complaintStatusColors[complaintData.status]} bg-${complaintStatusColors[complaintData.status]}/10 px-2 rounded-full font-semibold capitalize`}
+            >
+              {complaintData.status.at(0)?.toUpperCase() +
+                complaintData.status.slice(1).replace("_", " ")}
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <MiniInfo
+              title="Complaint ID"
+              value={complaintData.id.toString()}
+            />
+            <MiniInfo
+              title="Submitted At"
+              value={formatDate(complaintData.created_at)}
+            />
+            <MiniInfo
+              title="Customer Name"
+              value={complaintData.customer_name}
+            />
+            <MiniInfo
+              title="Provider Name"
+              value={complaintData.provider_name}
+            />
+            <span className=" col-span-2">
+              <MiniInfo title="Description" value={complaintData.description} />
+            </span>
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Booking Details */}
