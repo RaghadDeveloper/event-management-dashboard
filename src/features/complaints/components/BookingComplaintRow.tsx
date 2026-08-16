@@ -9,33 +9,16 @@ const BookingComplaintRow = ({
 }: {
   complaint: BookingComplaint;
 }) => {
-  const {
-    id,
-    booking,
-    description,
-    provider_name,
-    customer_name,
-    status,
-    created_at,
-  } = complaint;
+  const { id, booking, provider_name, customer_name, status, created_at } =
+    complaint;
   const cellStyle = "mx-3 text-nowrap";
   const navigate = useNavigate();
-
-  const complaintData = {
-    id,
-    booking,
-    description,
-    provider_name,
-    customer_name,
-    status,
-    created_at,
-  };
 
   return (
     <div
       className=" cursor-pointer"
       onClick={() =>
-        navigate(`/bookings/${booking.id}`, { state: { complaintData } })
+        navigate(`/bookings/${booking.id}`, { state: { complaintId: id } })
       }
     >
       <Table.Row>
