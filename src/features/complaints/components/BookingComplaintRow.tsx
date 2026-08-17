@@ -25,7 +25,7 @@ const BookingComplaintRow = ({
         <p className={cellStyle}>{id}</p>
         <p className={cellStyle}>{customer_name}</p>
         <p className={cellStyle}>{provider_name}</p>
-        <p className={cellStyle}>{booking.service.name}</p>
+        <p className={cellStyle}>{booking.service.title}</p>
         <p className={cellStyle}>{formatDate(booking.booking_date)}</p>
         <p
           className={`${cellStyle} text-${complaintStatusColors[status]} font-semibold capitalize`}

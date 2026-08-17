@@ -30,8 +30,8 @@ export const rejectProviderApi = ({
     reason,
   });
 
-export const banUserApi = (userId: string) =>
+export const banUserApi = ({ userId }: { userId: string; id?: string }) =>
   apiClient.post(API.USERS.BAN.replace(":id", userId));
 
-export const unbanUserApi = (userId: string) =>
+export const unbanUserApi = ({ userId }: { userId: string; id?: string }) =>
   apiClient.post(API.USERS.UNBAN.replace(":id", userId));

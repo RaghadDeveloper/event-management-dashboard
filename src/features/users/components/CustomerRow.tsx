@@ -72,7 +72,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
           <ConfirmationModal
             action="unban"
             resource="customer"
-            onConfirm={() => unbanUser(String(id))}
+            onConfirm={() => unbanUser({ userId: String(id) })}
             disabled={isUnbanning}
           />
         </Modal.Window>
@@ -81,7 +81,7 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
           <ConfirmationModal
             action="ban"
             resource="customer"
-            onConfirm={() => banUser(String(id))}
+            onConfirm={() => banUser({ userId: String(id) })}
             disabled={isBanning}
           />
         </Modal.Window>

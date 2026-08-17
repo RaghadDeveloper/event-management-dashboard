@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import type { Review } from "../types";
+import { formatDate } from "../../../utils/helpers";
 
 const ReviewCard = ({ review }: { review: Review }) => {
   const { user, rating, comment, created_at } = review;
@@ -9,7 +10,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
         <div className="flex gap-1 justify-between items-end">
           <h6 className="text-lg font-semibold">{user.name}</h6>
           <span className="text-sm text-neutral-500">
-           {created_at.split("T")[0]}
+            {formatDate(created_at.split("T")[0])}
           </span>
         </div>
         <div className="flex gap-1 text-lg items-center">

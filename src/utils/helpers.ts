@@ -27,7 +27,7 @@ export const formatDuration = (minutes: number): string => {
   }
 
   if (remainingMinutes > 0) {
-    parts.push(`${remainingMinutes} min`);
+    parts.push(`${remainingMinutes} minute`);
   }
 
   return parts.join(", ");
@@ -36,5 +36,5 @@ export const formatDuration = (minutes: number): string => {
 import { format, parseISO } from "date-fns";
 
 export const formatDate = (date: string): string => {
-  return format(parseISO(date), "dd MMM, yyyy");
+  return format(parseISO(date), "MMM dd, yyyy");
 };

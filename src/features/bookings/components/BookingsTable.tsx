@@ -14,7 +14,6 @@ const BookingsTable = () => {
   const { data, isPending } = useBookings();
   const { bookings, pagination } = data || {};
 
-  console.log("data", data);
   if (isPending) return <Loader />;
 
   if (!bookings?.length) return <Empty resource="bookings" />;

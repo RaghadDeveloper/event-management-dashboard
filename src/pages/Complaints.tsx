@@ -3,7 +3,7 @@ import BookingsComplaintsTable from "../features/complaints/components/BookingsC
 
 const Complaints = () => {
   return (
-    <section>
+    <section className="flex flex-col gap-6">
       <Heading as="h2">Bookings Complaints</Heading>
       <BookingsComplaintsTable />
     </section>

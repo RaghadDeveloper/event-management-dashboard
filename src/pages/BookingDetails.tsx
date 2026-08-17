@@ -19,6 +19,7 @@ import Button from "../components/ui/Button";
 import Modal from "../components/common/Modal";
 import ResolveComplaintsModal from "../features/complaints/components/ResolveComplaintsModal";
 import { useComplaintDetails } from "../features/complaints/hooks/useComplaintDetails";
+import Empty from "../components/ui/Empty";
 
 const BookingDetails = () => {
   const { id } = useParams();
@@ -33,6 +34,8 @@ const BookingDetails = () => {
   const complaint = complaintData as BookingComplaint;
 
   if (loadingDetails) return <Loader />;
+
+  if (!bookingDetails) return <Empty resource="booking" />;
 
   const {
     booking_date,
@@ -147,7 +150,7 @@ const BookingDetails = () => {
       </header>
 
       {/* complaint */}
-      {loadingComplaint ? (
+      {complaintId && loadingComplaint ? (
         <div className="card">
           <Loader />
         </div>
@@ -241,7 +244,7 @@ const BookingDetails = () => {
             <img
               src={customer.avatar}
               alt="profile img"
-              className=" w-16 h-16 rounded-full"
+              className=" w-16 h-16 rounded-full object-cover"
             />
             <div className="flex flex-col items-baseline gap-2">
               <h6 className="font-semibold">{customer.name}</h6>
@@ -264,13 +267,13 @@ const BookingDetails = () => {
           </div>
           <div className="flex gap-4">
             <img
-              src={provider.avatar}
+              src={provider.user.avatar}
               alt="profile img"
-              className=" w-16 h-16 rounded-full"
+              className=" w-16 h-16 rounded-full object-cover"
             />
             <div className="flex flex-col items-baseline gap-2">
               <h6 className="font-semibold">{provider.name}</h6>
-              <p className=" text-neutral-500">{provider.email}</p>
+              <p className=" text-neutral-500">{provider.user.email}</p>
             </div>
           </div>
         </div>
