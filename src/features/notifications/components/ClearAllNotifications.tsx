@@ -1,5 +1,5 @@
-import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import { useClearAllNotifications } from "../hooks/useClearAllNotifications";
+import { TbTrash } from "react-icons/tb";
 
 const ClearAllNotifications = () => {
   const { mutate: clearAll, isPending: clearingAll } =
@@ -11,7 +11,7 @@ const ClearAllNotifications = () => {
       onClick={() => clearAll()}
       disabled={clearingAll}
     >
-      <IoCheckmarkDoneOutline size={20} />
+      <TbTrash size={20} />
       Clear all notifications
     </button>
   );
