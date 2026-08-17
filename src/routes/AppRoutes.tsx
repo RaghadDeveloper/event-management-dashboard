@@ -11,6 +11,8 @@ import ProviderDetails from "../pages/ProviderDetails";
 import BookingDetails from "../pages/BookingDetails";
 import Complaints from "../pages/Complaints";
 import Notifications from "../pages/Notifications";
+import Payments from "../pages/Payments";
+import Payouts from "../pages/Payouts";
 
 export const routes = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -40,7 +42,14 @@ export const routes = createBrowserRouter([
           { path: ":id", element: <BookingDetails /> },
         ],
       },
-      { path: "transactions", element: <div>Transactions</div> },
+      {
+        path: "transactions",
+        children: [
+          { index: true, element: <Navigate to="payments" replace /> },
+          { path: "payments", element: <Payments /> },
+          { path: "payouts", element: <Payouts /> },
+        ],
+      },
       { path: "notifications", element: <Notifications /> },
       { path: "feedback", element: <div>Feedback</div> },
       { path: "complaints", element: <Complaints /> },

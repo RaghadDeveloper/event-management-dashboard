@@ -59,7 +59,7 @@
   }
 
   .card {
-    @apply bg-bg-main px-5 py-5 rounded-md w-full flex flex-col gap-2 shadow-md relative
+    @apply bg-bg-main px-5 py-5 rounded-md w-full flex flex-col gap-2 shadow-md relative;
   }
 }
 
