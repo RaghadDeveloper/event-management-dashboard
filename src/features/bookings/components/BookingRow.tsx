@@ -19,9 +19,12 @@ const BookingRow = ({ booking }: { booking: Booking }) => {
   const navigate = useNavigate();
 
   return (
-    <div className=" cursor-pointer" onClick={() => navigate(id)}>
+    <div
+      className=" cursor-pointer border-b border-tertiary/40 last:border-none"
+      onClick={() => navigate(id)}
+    >
       <Table.Row onClick={() => navigate(`${id}`)}>
-        <p className={cellStyle}>{id}</p>
+        <p className={cellStyle + " font-semibold text-primary-500"}>{id}</p>
         <img
           src={service.image}
           alt={service.name}
