@@ -16,7 +16,7 @@ const BookingComplaintRow = ({
 
   return (
     <div
-      className=" cursor-pointer"
+      className=" cursor-pointer border-b border-tertiary/40 last:border-none"
       onClick={() =>
         navigate(`/bookings/${booking.id}`, { state: { complaintId: id } })
       }

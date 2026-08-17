@@ -18,10 +18,10 @@ export const statusColors = {
   accepted: "success",
   deposit_paid: "warning",
   confirmed: "success",
-  completed: "neutral-600",
+  completed: "neutral-500",
   cancelled: "danger",
   rejected: "danger",
-  expired: "neutral-600",
+  expired: "neutral-500",
 };
 
 export const bookingsStatusFilters = [

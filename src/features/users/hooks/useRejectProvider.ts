@@ -9,9 +9,15 @@ export const useRejectProvider = () => {
 
   return useMutation({
     mutationFn: rejectProviderApi,
-    onSuccess: (providerId) => {
-      queryClient.invalidateQueries({ queryKey: ["providers"] });
-      queryClient.invalidateQueries({ queryKey: ["provider", providerId] });
+    onSuccess: (_, provider) => {
+      queryClient.invalidateQueries({
+        queryKey: ["providers"],
+        refetchType: "all",
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["provider-details", provider.providerId],
+        refetchType: "all",
+      });
       toast.success(t("Provider has been rejected successfully"));
     },
     onError: () => {

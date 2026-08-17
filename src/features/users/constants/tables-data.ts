@@ -26,17 +26,9 @@ export const providersTableGrid =
   "grid-cols-[0.45fr_1fr_1.5fr_1fr_1fr_0.8fr_0.8fr_0.3fr]";
 
 export const statusColors = {
-  active: "text-success",
-  banned: "text-danger",
-  approved: "text-success",
-  rejected: "text-danger",
-  pending: "text-warning",
-};
-
-export const statusBgColors = {
-  active: "bg-success/10",
-  banned: "bg-danger/10",
-  approved: "bg-success/10",
-  rejected: "bg-danger/10",
-  pending: "bg-warning/10",
+  active: "success",
+  banned: "danger",
+  approved: "success",
+  rejected: "danger",
+  pending: "warning",
 };
