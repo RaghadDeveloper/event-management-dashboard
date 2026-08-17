@@ -5,10 +5,7 @@ import Loader from "../components/common/Loader";
 import { FaStar } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import Button from "../components/ui/Button";
-import {
-  statusBgColors,
-  statusColors,
-} from "../features/users/constants/tables-data";
+import { statusColors } from "../features/users/constants/tables-data";
 import type { InfoBlockProps, Provider } from "./../types";
 import { GrLocation } from "react-icons/gr";
 import InfoBlock from "../components/ui/InfoBlock";
@@ -46,8 +43,6 @@ const ProviderDetails = () => {
   if (loadingProvider) return <Loader />;
 
   if (!provider) return <Empty resource="Provider" />;
-
-  console.log("provider", provider);
 
   const {
     avatar,
@@ -103,12 +98,12 @@ const ProviderDetails = () => {
               <Heading as="h3">{business_name}</Heading>
               <div className=" flex gap-2">
                 <p
-                  className={`${statusColors[approval_status]} ${statusBgColors[approval_status]} px-2 rounded-full h-fit capitalize font-semibold`}
+                  className={`text-${statusColors[approval_status]} bg-${statusColors[approval_status]}/10 px-2 rounded-full h-fit capitalize font-semibold`}
                 >
                   {approval_status}
                 </p>
                 <p
-                  className={`${statusColors[is_banned ? "banned" : "active"]} ${statusBgColors[is_banned ? "banned" : "active"]} px-2 rounded-full h-fit capitalize font-semibold`}
+                  className={`text-${statusColors[is_banned ? "banned" : "active"]} bg-${statusColors[is_banned ? "banned" : "active"]}/10 px-2 rounded-full h-fit capitalize font-semibold`}
                 >
                   {is_banned ? "banned" : "active"}
                 </p>

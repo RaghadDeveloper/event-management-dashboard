@@ -9,9 +9,15 @@ export const useApproveProvider = () => {
 
   return useMutation({
     mutationFn: approveProviderApi,
-    onSuccess: (providerId) => {
-      queryClient.invalidateQueries({ queryKey: ["providers"] });
-      queryClient.invalidateQueries({ queryKey: ["provider", providerId] });
+    onSuccess: (_, providerId) => {
+      queryClient.invalidateQueries({
+        queryKey: ["providers"],
+        refetchType: "all",
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["provider-details", providerId],
+        refetchType: "all",
+      });
       toast.success(t("Provider has been approved successfully"));
     },
     onError: () => {
