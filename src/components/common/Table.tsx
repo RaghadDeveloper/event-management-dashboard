@@ -31,7 +31,7 @@ const Table = ({ children, columns }: TableProps) => {
 };
 
 const Body = ({ children }: { children: ReactNode }) => {
-  return <div className="flex flex-col">{children}</div>;
+  return <div className="flex flex-col bg-bg-main">{children}</div>;
 };
 
 const Header = ({ titles }: TableHeaderProps) => {
@@ -57,7 +57,7 @@ const Row = ({ children, onClick }: TableRowProps) => {
 
   return (
     <div
-      className={`${commonStyle} ${columns} relative 2xl:text-base last:border-none hover:bg-bg-secondary/80 dark:hover:bg-bg-secondary/40 hover:rounded-sm hover:shadow-md`}
+      className={`${commonStyle} ${columns} bg-transparent relative 2xl:text-base last:border-none hover:bg-bg-secondary/80 dark:hover:bg-bg-secondary/40 hover:rounded-sm hover:shadow-md`}
       onClick={onClick}
     >
       {children}
