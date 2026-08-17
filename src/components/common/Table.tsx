@@ -40,9 +40,9 @@ const Header = ({ titles }: TableHeaderProps) => {
 
   return (
     <header className={`${commonStyle} ${columns} 2xl:text-base rounded-t-md`}>
-      {titles.map((title) => (
+      {titles.map((title, index) => (
         <h5
-          key={title}
+          key={index}
           className="mx-3 font-semibold text-primary-500 uppercase text-nowrap"
         >
           {t(title)}

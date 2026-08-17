@@ -15,6 +15,11 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 import type { BookingComplaint } from "../features/complaints/types";
 import { complaintStatusColors } from "../features/complaints/constant/table-data";
+import Button from "../components/ui/Button";
+import Modal from "../components/common/Modal";
+import ResolveComplaintsModal from "../features/complaints/components/ResolveComplaintsModal";
+import { useComplaintDetails } from "../features/complaints/hooks/useComplaintDetails";
+import Empty from "../components/ui/Empty";
 
 const BookingDetails = () => {
   const { id } = useParams();
@@ -23,10 +28,14 @@ const BookingDetails = () => {
   const { data: bookingDetails, isPending: loadingDetails } = useBookingDetails(
     String(id),
   );
-  const complaintData: BookingComplaint | undefined =
-    location.state?.complaintData;
+  const complaintId = location.state?.complaintId;
+  const { data: complaintData, isPending: loadingComplaint } =
+    useComplaintDetails(complaintId);
+  const complaint = complaintData as BookingComplaint;
 
   if (loadingDetails) return <Loader />;
+
+  if (!bookingDetails) return <Empty resource="booking" />;
 
   const {
     booking_date,
@@ -141,39 +150,46 @@ const BookingDetails = () => {
       </header>
 
       {/* complaint */}
-      {complaintData && (
+      {complaintId && loadingComplaint ? (
         <div className="card">
-          <div className="flex justify-between items-center ">
-            <Heading as="h5">Complaint Details</Heading>
-            <p
-              className={`text-${complaintStatusColors[complaintData.status]} bg-${complaintStatusColors[complaintData.status]}/10 px-2 rounded-full font-semibold capitalize`}
-            >
-              {complaintData.status.at(0)?.toUpperCase() +
-                complaintData.status.slice(1).replace("_", " ")}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <MiniInfo
-              title="Complaint ID"
-              value={complaintData.id.toString()}
-            />
-            <MiniInfo
-              title="Submitted At"
-              value={formatDate(complaintData.created_at)}
-            />
-            <MiniInfo
-              title="Customer Name"
-              value={complaintData.customer_name}
-            />
-            <MiniInfo
-              title="Provider Name"
-              value={complaintData.provider_name}
-            />
-            <span className=" col-span-2">
-              <MiniInfo title="Description" value={complaintData.description} />
-            </span>
-          </div>
+          <Loader />
         </div>
+      ) : (
+        complaint && (
+          <div className="card">
+            <div className="flex justify-between items-center ">
+              <Heading as="h5">Complaint Details</Heading>
+              <p
+                className={`text-${complaintStatusColors[complaint.status]} bg-${complaintStatusColors[complaint.status]}/10 px-2 rounded-full font-semibold capitalize`}
+              >
+                {complaint.status.at(0)?.toUpperCase() +
+                  complaint.status.slice(1).replace("_", " ")}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <MiniInfo title="Complaint ID" value={complaint.id.toString()} />
+              <MiniInfo
+                title="Submitted At"
+                value={formatDate(complaint.created_at)}
+              />
+              <MiniInfo title="Customer Name" value={complaint.customer_name} />
+              <MiniInfo title="Provider Name" value={complaint.provider_name} />
+              <Modal>
+                <span className=" col-span-2 flex justify-between items-center">
+                  <MiniInfo title="Description" value={complaint.description} />
+                  {complaint.status === "pending" && (
+                    <Modal.Open opens="make-decision">
+                      <Button variant="primary">Make decision</Button>
+                    </Modal.Open>
+                  )}
+                  <Modal.Window name="make-decision">
+                    <ResolveComplaintsModal complaintId={complaint.id} />
+                  </Modal.Window>
+                </span>
+              </Modal>
+            </div>
+          </div>
+        )
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -228,7 +244,7 @@ const BookingDetails = () => {
             <img
               src={customer.avatar}
               alt="profile img"
-              className=" w-16 h-16 rounded-full"
+              className=" w-16 h-16 rounded-full object-cover"
             />
             <div className="flex flex-col items-baseline gap-2">
               <h6 className="font-semibold">{customer.name}</h6>
@@ -251,13 +267,13 @@ const BookingDetails = () => {
           </div>
           <div className="flex gap-4">
             <img
-              src={provider.avatar}
+              src={provider.user.avatar}
               alt="profile img"
-              className=" w-16 h-16 rounded-full"
+              className=" w-16 h-16 rounded-full object-cover"
             />
             <div className="flex flex-col items-baseline gap-2">
               <h6 className="font-semibold">{provider.name}</h6>
-              <p className=" text-neutral-500">{provider.email}</p>
+              <p className=" text-neutral-500">{provider.user.email}</p>
             </div>
           </div>
         </div>

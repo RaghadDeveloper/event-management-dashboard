@@ -9,9 +9,16 @@ export const useBanUser = () => {
 
   return useMutation({
     mutationFn: banUserApi,
-    onSuccess: () => {
+    onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: ["customers"] });
-      queryClient.invalidateQueries({ queryKey: ["providers"] });
+      queryClient.invalidateQueries({
+        queryKey: ["providers"],
+        refetchType: "all",
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["provider-details", String(id)],
+        refetchType: "all",
+      });
       toast.success(t("User has been banned successfully"));
     },
     onError: () => {

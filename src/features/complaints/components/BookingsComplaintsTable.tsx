@@ -17,6 +17,7 @@ const BookingsComplaintsTable = () => {
   if (!bookingsComplaint?.length)
     return <Empty resource="bookings complaints" />;
 
+  console.log("data", bookingsComplaint);
   return (
     <Table columns={bookingsComplaintsTableGrid}>
       <Table.Header titles={bookingsComplaintsTableColumns} />

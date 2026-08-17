@@ -39,7 +39,6 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
     useApproveProvider();
 
   const cellStyle = "mx-3 text-nowrap";
-  console.log("is_banned", is_banned);
 
   return (
     <Table.Row>
@@ -130,7 +129,7 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
             <ConfirmationModal
               action="unban"
               resource="service provider"
-              onConfirm={() => unbanUser(String(id))}
+              onConfirm={() => unbanUser({ userId: String(id), id: String(service_provider_id) })}
               disabled={isUnbanning}
             />
           </Modal.Window>
@@ -139,7 +138,7 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
             <ConfirmationModal
               action="ban"
               resource="service provider"
-              onConfirm={() => banUser(String(id))}
+              onConfirm={() => banUser({ userId: String(id), id: String(service_provider_id) })}
               disabled={isBanning}
             />
           </Modal.Window>

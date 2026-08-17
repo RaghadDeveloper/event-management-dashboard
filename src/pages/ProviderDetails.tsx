@@ -23,6 +23,7 @@ import Modal from "../components/common/Modal";
 import ConfirmationModal from "../components/common/ConfirmationModal";
 import RejectProvider from "../features/users/components/RejectProvider";
 import { useApproveProvider } from "../features/users/hooks/useApproveProvider";
+import Empty from "../components/ui/Empty";
 // import i18n from "../lib/i18n";
 
 const ProviderDetails = () => {
@@ -44,27 +45,30 @@ const ProviderDetails = () => {
 
   if (loadingProvider) return <Loader />;
 
+  if (!provider) return <Empty resource="Provider" />;
+
+  console.log("provider", provider);
+
   const {
     avatar,
     business_name,
-    name,
+    phone,
     governorate,
     city,
     address,
     rating,
     reviews_count,
     approval_status,
-    is_banned,
-    phone,
     years_of_experience,
     description,
     categories,
     working_hours,
+    user: { id: user_id, name, email, is_banned },
   } = provider as Provider;
 
   const businessInfo: InfoBlockProps[] = [
     { title: "name", value: name },
-    { title: "email", value: name },
+    { title: "email", value: email },
     { title: "phone", value: phone },
     {
       title: "years of experience",
@@ -174,7 +178,7 @@ const ProviderDetails = () => {
           <div className="flex flex-col gap-4">
             <div className="card h-full">
               <Heading as="h4">Categories</Heading>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 {/* {categories.map((category) =>
                 language === "ar" ? (
                   <p>{category.ar.name}</p>
@@ -183,13 +187,13 @@ const ProviderDetails = () => {
                 ),
               )} */}
                 {categories.map((category) => (
-                  <div className="flex gap-2 items-center bg-primary-500/10 w-fit rounded-full px-4 py-2 ">
+                  <div className="flex gap-2 items-center bg-primary-500/10 w-fit rounded-full px-4 py-2 flex-nowrap">
                     <img
                       src={category.icon}
                       alt={category.en.name}
                       className="w-6 h-6"
                     />
-                    <span>{category.en.name}</span>
+                    <span className=" text-nowrap">{category.en.name}</span>
                   </div>
                 ))}
               </div>
@@ -251,7 +255,9 @@ const ProviderDetails = () => {
           <ConfirmationModal
             action="unban"
             resource="service provider"
-            onConfirm={() => unbanUser(String(id))}
+            onConfirm={() =>
+              unbanUser({ userId: String(user_id), id: String(id) })
+            }
             disabled={isUnbanning}
           />
         </Modal.Window>
@@ -260,7 +266,9 @@ const ProviderDetails = () => {
           <ConfirmationModal
             action="ban"
             resource="service provider"
-            onConfirm={() => banUser(String(id))}
+            onConfirm={() =>
+              banUser({ userId: String(user_id), id: String(id) })
+            }
             disabled={isBanning}
           />
         </Modal.Window>

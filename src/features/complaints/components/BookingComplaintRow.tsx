@@ -9,40 +9,23 @@ const BookingComplaintRow = ({
 }: {
   complaint: BookingComplaint;
 }) => {
-  const {
-    id,
-    booking,
-    description,
-    provider_name,
-    customer_name,
-    status,
-    created_at,
-  } = complaint;
+  const { id, booking, provider_name, customer_name, status, created_at } =
+    complaint;
   const cellStyle = "mx-3 text-nowrap";
   const navigate = useNavigate();
-
-  const complaintData = {
-    id,
-    booking,
-    description,
-    provider_name,
-    customer_name,
-    status,
-    created_at,
-  };
 
   return (
     <div
       className=" cursor-pointer"
       onClick={() =>
-        navigate(`/bookings/${booking.id}`, { state: { complaintData } })
+        navigate(`/bookings/${booking.id}`, { state: { complaintId: id } })
       }
     >
       <Table.Row>
         <p className={cellStyle}>{id}</p>
         <p className={cellStyle}>{customer_name}</p>
         <p className={cellStyle}>{provider_name}</p>
-        <p className={cellStyle}>{booking.service.name}</p>
+        <p className={cellStyle}>{booking.service.title}</p>
         <p className={cellStyle}>{formatDate(booking.booking_date)}</p>
         <p
           className={`${cellStyle} text-${complaintStatusColors[status]} font-semibold capitalize`}

@@ -50,6 +50,14 @@ export interface City {
   governorate_id: number;
 }
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  is_banned: boolean;
+  avatar: string;
+}
+
 export interface Customer {
   id: number;
   name: string;
@@ -85,4 +93,5 @@ export interface Provider {
   description: string;
   categories: Category[];
   working_hours: WorkingHour[];
+  user: User;
 }

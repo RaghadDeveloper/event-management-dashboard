@@ -14,5 +14,5 @@ export const bookingsComplaintsTableGrid =
 export const complaintStatusColors = {
   pending: "warning",
   resolved_release: "success",
-  resolved_reject: "danger",
+  resolved_refund: "danger",
 };

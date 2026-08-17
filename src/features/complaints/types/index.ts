@@ -15,4 +15,9 @@ export interface BookingComplaint {
 type BookingComplaintStatus =
   | "pending"
   | "resolved_release"
-  | "resolved_reject";
+  | "resolved_refund";
+
+export interface ResolveComplaintData {
+  decision: "release_to_provider" | "refund_to_customer";
+  note?: string;
+}
