@@ -23,7 +23,7 @@ const BookingsStatusPieChart = () => {
   ];
 
   return (
-    <div className="card col-span-2">
+    <div className="card col-span-3">
       <Heading as="h5">Bookings Status</Heading>
       <PieChart
         style={{

@@ -33,8 +33,23 @@ export const formatDuration = (minutes: number): string => {
   return parts.join(", ");
 };
 
-import { format, parseISO } from "date-fns";
+// import { format, parseISO } from "date-fns";
 
-export const formatDate = (date: string): string => {
-  return format(parseISO(date), "MMM dd, yyyy");
+// export const formatDate = (date: string): string => {
+//   return format(parseISO(date), "MMM dd, yyyy");
+// };
+
+
+// src/utils/helpers.ts
+import { format, isValid } from "date-fns";
+
+export const formatDate = (dateString?: string | Date | null) => {
+  if (!dateString) return "__";
+
+  const date = new Date(dateString);
+
+  // التحقق من أن التاريخ صالح قبل تمريره لـ format
+  if (!isValid(date)) return "__"; 
+
+  return format(date, "MMM dd, yyyy"); // أو التنسيق المستخدم لديك
 };

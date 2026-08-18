@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import Table from "../../../components/common/Table";
 import { statusColors } from "../constant/table-data";
 import type { Booking } from "../types";
+import { formatDate } from "../../../utils/helpers";
 
 const BookingRow = ({ booking }: { booking: Booking }) => {
   const {
@@ -33,10 +34,8 @@ const BookingRow = ({ booking }: { booking: Booking }) => {
         <p className={cellStyle}>{service.name}</p>
         <p className={cellStyle}>{provider.name}</p>
         <p className={cellStyle}>{customer?.name}</p>
-        <p className={cellStyle}>
-          {city.name}, {governorate.name}
-        </p>
-        <p className={cellStyle}>{booking_date}</p>
+        <p className={cellStyle}>{governorate.name}</p>
+        <p className={cellStyle}>{formatDate(booking_date)}</p>
         <p className={`${cellStyle} font-semibold`}>
           {estimated_price.toLocaleString()}
         </p>

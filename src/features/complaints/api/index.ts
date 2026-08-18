@@ -15,3 +15,11 @@ export const resolveComplaintApi = ({
   id: string;
   data: ResolveComplaintData;
 }) => apiClient.post(API.BOOKINGS_COMPLAINTS.RESOLVE.replace(":id", id), data);
+
+export const refundCustomerApi = ({
+  payment_id,
+  amount,
+}: {
+  payment_id: string;
+  amount: number;
+}) => apiClient.post(API.BOOKINGS_COMPLAINTS.REFUND, { payment_id, amount });

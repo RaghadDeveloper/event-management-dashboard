@@ -11,7 +11,7 @@ export const bookingsTableColumns = [
 ];
 
 export const bookingsTableGrid =
-  "grid-cols-[2rem_6rem_2fr_1fr_1fr_1fr_8rem_6rem_8rem]";
+  "grid-cols-[2rem_6rem_2fr_1.4fr_10rem_8rem_8rem_6rem_8rem]";
 
 export const statusColors = {
   pending: "warning",

@@ -4,11 +4,11 @@ const DashboardFilter = () => {
   return (
     <Filter
       options={[
-        { value: "last_7_days", label: "last 7 days" },
-        { value: "last_30_days", label: "last 30 days" },
-        { value: "last_90_days", label: "last 90 days" },
+        { value: "month", label: "last month" },
+        { value: "week", label: "last week" },
+        { value: "year", label: "last year" },
       ]}
-      filterField="timeframe"
+      filterField="period"
     />
   );
 };
