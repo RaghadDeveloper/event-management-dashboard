@@ -38,12 +38,9 @@ const CustomerRow = ({ customer }: { customer: Customer }) => {
         {governorate?.name}, {city?.name}
       </p>
       <p
-        className={
-          statusColors[is_banned ? "banned" : "active"] +
-          " " +
-          cellStyle +
-          " font-semibold capitalize"
-        }
+        className={`
+          text-${statusColors[is_banned ? "banned" : "active"]} 
+          ${cellStyle} font-semibold capitalize`}
       >
         {t(is_banned ? "banned" : "active")}
       </p>
