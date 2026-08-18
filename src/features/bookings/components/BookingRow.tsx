@@ -11,7 +11,7 @@ const BookingRow = ({ booking }: { booking: Booking }) => {
     provider,
     governorate,
     customer,
-    city,
+    // city,
     booking_date,
     estimated_price,
     status,

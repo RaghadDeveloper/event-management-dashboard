@@ -5,12 +5,12 @@ import {
 } from "react-icons/hi";
 import Heading from "../components/ui/Heading";
 import BookingsLineChart from "../features/dashboard/components/BookingsLineChart";
-import BookingsStatusPieChart from "../features/dashboard/components/BookingsStatusPieChart";
-import CategoriesBarChart from "../features/dashboard/components/CategoriesBarChart";
+// import BookingsStatusPieChart from "../features/dashboard/components/BookingsStatusPieChart";
+// import CategoriesBarChart from "../features/dashboard/components/CategoriesBarChart";
 import DashboardBox from "../features/dashboard/components/DashboardBox";
 import DashboardFilter from "../features/dashboard/components/DashboardFilter";
 import ProviderStatus from "../features/dashboard/components/ProviderStatus";
-import RevenueBarChart from "../features/dashboard/components/RevenueBarChart";
+// import RevenueBarChart from "../features/dashboard/components/RevenueBarChart";
 import {
   HiOutlineArrowPath,
   HiOutlineBanknotes,
