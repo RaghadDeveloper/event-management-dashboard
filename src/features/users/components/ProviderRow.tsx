@@ -64,21 +64,16 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
       </p>
 
       <p
-        className={
-          statusColors[approval_status] +
-          " font-semibold capitalize " +
-          cellStyle
-        }
+        className={`
+          text-${statusColors[approval_status]}
+          font-semibold capitalize
+          ${cellStyle}`}
       >
         {t(approval_status)}
       </p>
       <p
-        className={
-          statusColors[is_banned ? "banned" : "active"] +
-          " " +
-          cellStyle +
-          " font-semibold capitalize"
-        }
+        className={`text-${statusColors[is_banned ? "banned" : "active"]} 
+          ${cellStyle} font-semibold capitalize`}
       >
         {t(is_banned ? "banned" : "active")}
       </p>
@@ -129,7 +124,12 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
             <ConfirmationModal
               action="unban"
               resource="service provider"
-              onConfirm={() => unbanUser({ userId: String(id), id: String(service_provider_id) })}
+              onConfirm={() =>
+                unbanUser({
+                  userId: String(id),
+                  id: String(service_provider_id),
+                })
+              }
               disabled={isUnbanning}
             />
           </Modal.Window>
@@ -138,7 +138,9 @@ const ProviderRow = ({ provider }: { provider: Provider }) => {
             <ConfirmationModal
               action="ban"
               resource="service provider"
-              onConfirm={() => banUser({ userId: String(id), id: String(service_provider_id) })}
+              onConfirm={() =>
+                banUser({ userId: String(id), id: String(service_provider_id) })
+              }
               disabled={isBanning}
             />
           </Modal.Window>

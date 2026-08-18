@@ -1,4 +1,5 @@
-import { FaMoneyCheckAlt, FaRegUser } from "react-icons/fa";
+import { FaCreditCard, FaMoneyCheckAlt, FaRegUser } from "react-icons/fa";
+import { FaHandHoldingDollar } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
 import { MdMiscellaneousServices, MdNotificationsActive } from "react-icons/md";
 import { TbDashboard } from "react-icons/tb";
@@ -35,7 +36,18 @@ export const sidebarItems = [
   {
     Icon: FaMoneyCheckAlt,
     title: "transactions",
-    path: "/transactions",
+    children: [
+      {
+        Icon: FaCreditCard,
+        title: "payments",
+        path: "/transactions/payments",
+      },
+      {
+        Icon: FaHandHoldingDollar,
+        title: "payouts",
+        path: "/transactions/payouts",
+      },
+    ],
   },
   {
     Icon: MdNotificationsActive,

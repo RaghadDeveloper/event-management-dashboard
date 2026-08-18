@@ -63,7 +63,7 @@ const SidebarItem = ({ nav, isClose, onClick }: SidebarItemProps) => {
                 key={child.title}
                 to={child.path || ""}
                 className={({ isActive }) =>
-                  `py-2 hover:text-primary-400 ${style.base} ${
+                  `py-2 hover:text-primary-400 bg-transparent border-none ${style.base} ${
                     isActive ? style.active : ""
                   }`
                 }
