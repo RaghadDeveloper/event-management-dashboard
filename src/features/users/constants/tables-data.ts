@@ -23,7 +23,7 @@ export const providersTableColumns = [
 ];
 
 export const providersTableGrid =
-  "grid-cols-[0.45fr_1fr_1.5fr_1fr_1fr_0.8fr_0.8fr_0.3fr]";
+  "grid-cols-[0.45fr_1.5fr_1.8fr_10rem_1.3fr_0.8fr_0.8fr_0.3fr]";
 
 export const statusColors = {
   active: "success",

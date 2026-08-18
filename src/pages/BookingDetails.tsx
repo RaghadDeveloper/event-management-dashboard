@@ -60,12 +60,12 @@ const BookingDetails = () => {
     {
       Icon: IoCalendarOutline,
       title: "Date",
-      value: formatDate(booking_date),
+      value: formatDate(booking_date!),
     },
     {
       Icon: FiClock,
       title: "Duration",
-      value: formatDuration(Number(duration)),
+      value: formatDuration(Number(duration!)),
     },
     {
       Icon: FiPlayCircle,
@@ -85,7 +85,7 @@ const BookingDetails = () => {
     {
       Icon: FiClock,
       title: "Buffer After",
-      value: formatDuration(buffer_after_minutes),
+      value: formatDuration(buffer_after_minutes!),
     },
   ];
 
@@ -151,7 +151,7 @@ const BookingDetails = () => {
 
       {/* complaint */}
       {complaintId && loadingComplaint ? (
-        <div className="card">
+        <div className="card min-h-40">
           <Loader />
         </div>
       ) : (

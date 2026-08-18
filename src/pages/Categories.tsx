@@ -8,6 +8,7 @@ import type { Category } from "../features/categories/types";
 const Categories = () => {
   const { t } = useTranslation();
   const { data: categories = [], isPending } = useCategories();
+  console.log("categories", categories);
 
   return (
     <section>

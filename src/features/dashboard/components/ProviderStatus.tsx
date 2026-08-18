@@ -8,6 +8,8 @@ import {
   type PieSectorDataItem,
 } from "recharts";
 import Heading from "../../../components/ui/Heading";
+import { useProviderCounts } from "../hooks/useProviderCounts";
+import Loader from "../../../components/common/Loader";
 
 const renderActiveShape = ({
   cx,
@@ -67,7 +69,7 @@ const renderActiveShape = ({
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`PV ${value}`}</text>
+      >{`Count: ${value}`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -82,14 +84,26 @@ const renderActiveShape = ({
 };
 
 const ProviderStatus = () => {
-  const data = [
-    { name: "Group B", value: 300, color: "var(--color-primary-300)" },
-    { name: "Group C", value: 300, color: "var(--color-primary-400)" },
-    { name: "Group D", value: 200, color: "var(--color-primary-500)" },
+  const { data, isPending } = useProviderCounts();
+
+  if (isPending)
+    return (
+      <div className="card col-span-1">
+        <Loader />
+      </div>
+    );
+  if (!data) return null;
+
+  const { approved = 0, pending = 0, rejected = 0 } = data;
+
+  const chartData = [
+    { name: "Approved", value: approved, color: "var(--color-primary-300)" },
+    { name: "Pending", value: pending, color: "var(--color-primary-500)" },
+    { name: "Rejected", value: rejected, color: "var(--color-primary-700)" },
   ];
 
   return (
-    <div className="card col-span-2">
+    <div className="card col-span-1">
       <Heading as="h5">Service Providers Status</Heading>
       <PieChart
         style={{
@@ -114,7 +128,7 @@ const ProviderStatus = () => {
           iconSize={15}
           iconType="circle"
           wrapperStyle={{
-            top: 80,
+            top: 20,
             left: 20,
             right: 20,
             position: "absolute",
@@ -123,7 +137,7 @@ const ProviderStatus = () => {
 
         <Pie
           activeShape={renderActiveShape}
-          data={data}
+          data={chartData}
           nameKey="name"
           dataKey="value"
           innerRadius={85}
@@ -134,7 +148,7 @@ const ProviderStatus = () => {
           endAngle={0}
           paddingAngle={3}
         >
-          {data.map((entry, index) => (
+          {chartData.map((entry, index) => (
             <Cell
               key={`cell-${index}`}
               fill={entry.color}

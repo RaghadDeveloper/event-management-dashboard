@@ -3,6 +3,7 @@ import type { Category } from "../types";
 
 const CategoryCard = ({ category }: { category: Category }) => {
   const { icon, name } = category;
+  if (!icon || !name) return null;
 
   return (
     <div className="group relative flex flex-col items-center justify-center gap-2 p-6 bg-bg-main rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 transform duration-300 ">

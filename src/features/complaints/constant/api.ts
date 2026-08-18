@@ -3,5 +3,6 @@ export const API = {
     ALL: "/admin/complaints",
     DETAILS: "/admin/complaints/:id",
     RESOLVE: "/admin/complaints/:id/resolve",
+    REFUND: "/admin/refunds",
   },
 } as const;
